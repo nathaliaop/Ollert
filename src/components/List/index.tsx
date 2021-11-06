@@ -7,8 +7,13 @@ import { MdAdd } from 'react-icons/md';
 import { Container } from './styles';
 
 import Card from '../Card';
+import CardType from '../../@types/CardType';
 
-const List: NextComponentType = ({ data, children }: { data: BoardType, children?: ReactNode }) => {
+type Props = {
+  data: BoardType,
+}
+
+const List: React.FC<Props> = ({ data }) => {
   return (
     <Container>
       <header>
@@ -21,7 +26,7 @@ const List: NextComponentType = ({ data, children }: { data: BoardType, children
       </header>
 
       <ul>
-        { data.cards.map((card, index): {card: any, index: number} => <Card key={card.id} index={index} data={card} />) }
+        { data.cards.map((card, index) => <Card key={card.id} data={card} index={index} />) }
       </ul>
     </Container>
   );

@@ -21,12 +21,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Dashboard />
-        {/*
         <DndProvider backend={HTML5Backend}>
           <Header />
           <Board />
-        </DndProvider>*/}
+        </DndProvider>
       </main>
     </>
   )

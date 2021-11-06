@@ -6,8 +6,13 @@ import { useDrag, useDrop } from 'react-dnd';
 
 import { Container, Label } from './styles';
 
-const Card: NextComponentType = ({ data, index }: { data: CardType, index: number }) => {
-  const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
+type Props = {
+  data: CardType,
+  index: number
+}
+
+const Card: React.FC<Props> = ({ data, index }) => {
+  const ref = useRef<HTMLDivElement>(null);
 
   const ItemTypes = {
     CARD: 'CARD',
@@ -27,7 +32,7 @@ const Card: NextComponentType = ({ data, index }: { data: CardType, index: numbe
       isDragging: monitor.isDragging(),
     }),
   });
-
+  
   const [, dropRef] = useDrop({
     accept: [ItemTypes.CARD],
     hover(item: DragObject, monitor) { // passar card por cima de outro
@@ -39,7 +44,7 @@ const Card: NextComponentType = ({ data, index }: { data: CardType, index: numbe
   dragRef(dropRef(ref));
 
   return (
-    <Container ref={ref} isDragging={isDragging}>
+    <Container isDragging={isDragging} ref={ref}>
       <header>
         { data.labels.map((label: string) => <Label key={label} color={label} />) }
       </header>

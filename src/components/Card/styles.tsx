@@ -2,7 +2,11 @@ import styled, { css } from 'styled-components';
 
 import Themes from '../../../styles/Themes'; 
 
-export const Container = styled.div`
+interface ContainerProps {
+  isDragging: boolean,
+}
+
+export const Container = styled.div<ContainerProps>`
   position: relative;
   background: #FFFFFF;
   border-radius: 5px;
