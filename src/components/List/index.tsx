@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 import type { NextComponentType } from 'next';
 import BoardType from '../../@types/BoardType';
@@ -15,20 +16,25 @@ type Props = {
 
 const List: React.FC<Props> = ({ data }) => {
   return (
-    <Container>
-      <header>
-        <h2>{data.title}</h2>
-        {data.creatable && (
-          <button type='button'>
-            <MdAdd size={24} color='#FFFFFF' />
-          </button>
-        )}
-      </header>
+      <PerfectScrollbar 
+        style={{height: 'calc(100vh - 120px)', width: '100%'}}
+        onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}
+      >
+        <Container>
+          <header>
+            <h2>{data.title}</h2>
+            {data.creatable && (
+              <button type='button'>
+                <MdAdd size={24} color='#FFFFFF' />
+              </button>
+            )}
+          </header>
 
-      <ul>
-        { data.cards.map((card, index) => <Card key={card.id} data={card} index={index} />) }
-      </ul>
-    </Container>
+          <ul>
+            { data.cards.map((card, index) => <Card key={card.id} data={card} index={index} />) }
+          </ul>
+        </Container>
+      </PerfectScrollbar>
   );
 }
 

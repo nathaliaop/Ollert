@@ -4,7 +4,9 @@ import { Container } from './styles';
 
 const Header: NextComponentType = () => {
   return (
-    <Container>Ollert</Container>
+    <Container>
+      <h1><a href=''>OLLERT</a></h1>
+    </Container>
   );
 }
 
