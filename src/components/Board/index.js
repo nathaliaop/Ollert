@@ -9,8 +9,7 @@ const lists = loadLists();
 const Board = () => {
   return (
     <Container>
-        oi
-      { /*lists.map(list => <List key={list.title} data={list} />)*/ }
+        { lists.map(list => <List key={list.title} data={list} />) }
     </Container>
   );
 }
